@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TASK.OS — 任务管理</title>
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <!-- 背景装饰线 -->
+  <div class="bg-deco"></div>
+
+  <!-- 撒花容器 -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-title">TASK<span class="brand-dot">.</span>OS</span>
+    </div>
+    <div class="topbar-right">
+      <span class="meta-date" id="currentDate"></span>
+      <!-- 进度条 -->
+      <div class="progress-wrap" id="progressWrap" style="display:none">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+        <span class="progress-text" id="progressText"><span>0</span>%</span>
+      </div>
+      <div class="meta-stats">
+        <span class="stat-item">
+          <span class="stat-num" id="statTotal">0</span>
+          <span class="stat-label">TOTAL</span>
+        </span>
+        <span class="stat-divider">·</span>
+        <span class="stat-item">
+          <span class="stat-num stat-num--done" id="statDone">0</span>
+          <span class="stat-label">DONE</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <div class="app-container">
+
+    <!-- 输入区 -->
+    <div class="input-section">
+      <div class="input-row">
+        <div class="input-wrapper" id="inputWrapper">
+          <span class="input-prefix">+</span>
+          <input
+            type="text"
+            id="taskInput"
+            class="task-input"
+            placeholder="输入任务，按 Enter 添加..."
+            maxlength="100"
+            autocomplete="off"
+          />
+          <span class="input-counter" id="inputCounter">0/100</span>
+          <button class="add-btn" id="addBtn" title="添加任务">
+            <span class="add-btn-icon">→</span>
+          </button>
+        </div>
+      </div>
+      <div class="input-error" id="inputError"></div>
+    </div>
+
+    <!-- 筛选栏 -->
+    <div class="filter-row">
+      <div class="filter-tabs">
+        <button class="filter-tab filter-tab--active" data-filter="all">
+          <span class="tab-label">全部</span>
+          <span class="tab-count" id="countAll">0</span>
+        </button>
+        <button class="filter-tab" data-filter="active">
+          <span class="tab-label">未完成</span>
+          <span class="tab-count" id="countActive">0</span>
+        </button>
+        <button class="filter-tab" data-filter="completed">
+          <span class="tab-label">已完成</span>
+          <span class="tab-count" id="countCompleted">0</span>
+        </button>
+      </div>
+      <button class="clear-btn" id="clearCompletedBtn" title="清除已完成">
+        <span>清空已完成</span>
+      </button>
+    </div>
+
+    <!-- 任务列表 -->
+    <ul class="task-list" id="taskList"></ul>
+
+    <!-- 空状态 -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">◎</div>
+      <p class="empty-title">暂无任务</p>
+      <p class="empty-sub">在上方输入框添加你的第一个任务</p>
+    </div>
+
+    <!-- 底部提示 -->
+    <div class="footer-tip">
+      <span>按 <kbd>Enter</kbd> 添加 · 双击编辑 · <kbd>Esc</kbd> 取消</span>
+      <span>v1.0.0</span>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="storage.js?v=2026040103"></script>
+  <script src="task.js?v=2026040103"></script>
+  <script src="ui.js?v=2026040103"></script>
+  <script src="app.js?v=2026040103"></script>
+</body>
+</html>
